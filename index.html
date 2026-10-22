@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IRFAN JARVIS AI</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="hud-scanlines"></div>
+
+  <header class="jarvis-header">
+    <div class="system-status">
+      <span class="status-dot"></span>
+      <span id="status-indicator">SYSTEM: ONLINE</span>
+    </div>
+    <h1 class="logo">IRFAN <span>JARVIS</span></h1>
+    <button id="settings-toggle" class="icon-btn" title="Settings">⚙️</button>
+  </header>
+
+  <!-- Arc Reactor Voice Visualizer -->
+  <section class="reactor-container">
+    <div class="reactor-outer-ring"></div>
+    <div class="reactor-middle-ring"></div>
+    <div class="reactor-inner-core" id="reactor-core">
+      <div class="sound-wave" id="sound-wave">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>
+      <button id="mic-main-btn" class="mic-hud-btn" aria-label="Microphone">
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="currentColor">
+          <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+          <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+        </svg>
+      </button>
+    </div>
+    <p id="hud-subtext" class="hud-subtext">Tap mic or click "Hey Jarvis"</p>
+  </section>
+
+  <!-- Action Controls -->
+  <section class="control-deck">
+    <button id="btn-hey-jarvis" class="action-btn glow-accent">⚡ Hey Jarvis</button>
+    <button id="btn-start-listen" class="action-btn">🎙️ Start Listening</button>
+    <button id="btn-stop-listen" class="action-btn">🛑 Stop</button>
+    <button id="btn-clear-chat" class="action-btn btn-danger">🧹 Clear</button>
+  </section>
+
+  <!-- Quick Assistant Prompts for Irfan -->
+  <div class="shortcuts-row">
+    <button class="chip" data-prompt="Generate a viral YouTube title, description, and tags for a tech video.">📺 YouTube SEO</button>
+    <button class="chip" data-prompt="Mujhe ek study plan bana kar do for exams.">📚 Study Helper</button>
+    <button class="chip" data-prompt="Irfan ke liye ek professional Hindi greeting message likho.">✍️ Hindi Msg</button>
+  </div>
+
+  <!-- Chat Screen -->
+  <main class="chat-container" id="chat-container">
+    <div class="chat-bubble jarvis-bubble">
+      <div class="bubble-tag">JARVIS</div>
+      <p id="initial-greeting">Hello Irfan! Main aapka personal AI assistant hoon. Aaj main aapki kya madad kar sakta hoon?</p>
+      <button class="speak-msg-btn" onclick="speakText(document.getElementById('initial-greeting').innerText)">🔊 Speak</button>
+    </div>
+  </main>
+
+  <!-- Fallback Text Input -->
+  <footer class="input-deck">
+    <input type="text" id="text-input" placeholder="Type a message or use microphone..." autocomplete="off">
+    <button id="send-btn" class="action-btn">SEND</button>
+  </footer>
+
+  <!-- Settings Panel -->
+  <div class="modal-overlay" id="settings-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>SYSTEM SETTINGS</h3>
+        <button id="close-settings" class="close-btn">&times;</button>
+      </div>
+      <div class="setting-item">
+        <label for="lang-select">Speech Language:</label>
+        <select id="lang-select">
+          <option value="hi-IN">Hindi / Hinglish (hi-IN)</option>
+          <option value="en-IN" selected>Indian English (en-IN)</option>
+          <option value="en-US">US English (en-US)</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label for="voice-select">Assistant Spoken Voice:</label>
+        <select id="voice-select">
+          <option value="">Default System Voice</option>
+        </select>
+      </div>
+      <div class="setting-item flex-between">
+        <label for="toggle-speech">Auto-Speak Answers:</label>
+        <input type="checkbox" id="toggle-speech" checked>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
